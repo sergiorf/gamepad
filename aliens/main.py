@@ -7,6 +7,7 @@ import pygame
 from pygame.locals import K_ESCAPE, KEYDOWN, QUIT
 
 from settings import Settings
+from ship import Ship
 
 
 def run() -> None:
@@ -15,6 +16,8 @@ def run() -> None:
     pygame.init()
     screen = pygame.display.set_mode((settings.screen_width, settings.screen_height))
     pygame.display.set_caption("Aliens")
+
+    ship = Ship(screen)
 
     clock = pygame.time.Clock()
     running = True
@@ -27,6 +30,7 @@ def run() -> None:
                 running = False
 
         screen.fill(settings.bg_color)
+        ship.blitme()
         pygame.display.flip()
         clock.tick(60)
 
